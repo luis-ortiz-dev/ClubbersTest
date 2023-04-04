@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PruebaXamarinLuisOrtiz.Views.CurrencyPage"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="White">
+
+    <ContentPage.Content>
+        <RefreshView
+            Margin="0,10"
+            IsRefreshing="{Binding IsBusy}"
+            Command="{Binding GetLatestExchangeCommand}">
+
+            <CollectionView
+                ItemsSource="{Binding CurrencyList}"
+                SelectionMode="Single"
+                SelectedItem="{Binding SelectedCurrency}"
+                SelectionChangedCommand="{Binding GoToCurrencyDetailsCommand}">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame
+                            Margin="0"
+                            Padding="0"
+                            IsClippedToBounds="True"
+                            BackgroundColor="WhiteSmoke">
+                            <Grid
+                                RowDefinitions="*,1"
+                                RowSpacing="0">
+                                <Label
+                                    Margin="20,10"
+                                    Text="{Binding Code}"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="Start"
+                                    VerticalOptions="Center"/>
+
+                                <Label
+                                    Margin="20,10"
+                                    Grid.Column="1"
+                                    Text="{Binding Value}"
+                                    FontSize="20"
+                                    FontAttributes="Bold"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"/>
+
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.ColumnSpan="2"
+                                    BackgroundColor="Gray"
+                                    VerticalOptions="End"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout
+                        Orientation="Vertical"
+                        ItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+        </RefreshView>
+    </ContentPage.Content>
+</ContentPage>
+

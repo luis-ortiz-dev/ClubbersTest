@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="PruebaXamarinLuisOrtiz.Views.CurrencyDetailPage"
+    Shell.NavBarIsVisible="False">
+
+    <ContentPage.Content>
+        <Grid
+            Margin="10"
+            RowDefinitions="*,25,25,25,25,25,25,*,60">
+            <Label
+                Grid.Row="1"
+                HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            Text="Code: "
+                            FontSize="20"
+                            FontAttributes="Bold"/>
+                        <Span
+                            Text="{Binding SelectedCurrency.Code}"
+                            FontSize="20"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label
+                Grid.Row="2"
+                HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            Text="Name: "
+                            FontSize="20"
+                            FontAttributes="Bold"/>
+                        <Span
+                            Text="{Binding SelectedCurrency.Name}"
+                            FontSize="20"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            
+            <Label
+                Grid.Row="3"
+                HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            Text="Plural Name: "
+                            FontSize="20"
+                            FontAttributes="Bold"/>
+                        <Span
+                            Text="{Binding SelectedCurrency.PluralName}"
+                            FontSize="20"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label
+                Grid.Row="4"
+                HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            Text="Symbol: "
+                            FontSize="20"
+                            FontAttributes="Bold"/>
+                        <Span
+                            Text="{Binding SelectedCurrency.SymbolNative}"
+                            FontSize="20"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            
+            <Label
+                Grid.Row="5"
+                HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            Text="Decimal Digits: "
+                            FontSize="20"
+                            FontAttributes="Bold"/>
+                        <Span
+                            Text="{Binding SelectedCurrency.DecimalDigits}"
+                            FontSize="20"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label
+                Grid.Row="6"
+                HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span
+                            Text="Rounding: "
+                            FontSize="20"
+                            FontAttributes="Bold"/>
+                        <Span
+                            Text="{Binding SelectedCurrency.Rounding}"
+                            FontSize="20"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Button
+                Grid.Row="8"
+                Text="Cancel"
+                Style="{x:StaticResource PrimaryButton}"
+                Command="{Binding GoBackCommand}"/>
+            </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:PruebaXamarinLuisOrtiz.ViewModels"
+    x:Class="PruebaXamarinLuisOrtiz.Views.TaskDetailPage"
+    x:DataType="vm:TaskDetailPageViewModel"
+    Shell.NavBarIsVisible="False"
+    BackgroundColor="White">
+
+    <ContentPage.Content>
+        <Grid
+            RowDefinitions="40, 20, *, 50, 50"
+            Margin="20">
+
+            <Entry
+                x:Name="title"
+                Placeholder="Please enter title"
+                PlaceholderColor="{x:StaticResource LightBlack}"
+                Text="{Binding Title}"
+                TextColor="Black"
+                BackgroundColor="{x:StaticResource LightGray}"/>
+
+            <StackLayout
+                x:Name="isComplete"
+                Grid.Row="1"
+                Orientation="Horizontal"
+                HorizontalOptions="Center"
+                IsVisible="{Binding IsUpdate}">
+                <Label
+                    Text="Is Task Complete?"
+                    TextColor="Black"/>
+                <CheckBox
+                    x:Name="checkbox"
+                    IsChecked="{Binding IsCompleted}"/>
+            </StackLayout>
+
+            <Editor
+                Grid.Row="2"
+                x:Name="description"
+                Placeholder="Please enter description"
+                PlaceholderColor="{x:StaticResource LightBlack}"
+                Text="{Binding Description}"
+                TextColor="Black"
+                BackgroundColor="{x:StaticResource LightGray}"
+                HeightRequest="100"/>
+
+            <Button
+                Grid.Row="3"
+                Text="Create Task"
+                Style="{x:StaticResource GreenButton}"
+                VerticalOptions="End"
+                Command="{Binding SaveTaskCommand}">
+
+                <Button.Triggers>
+                    <DataTrigger
+                        TargetType="Button"
+                        Binding="{Binding IsUpdate}"
+                        Value="True">
+
+                        <Setter
+                            Property="Text"
+                            Value="Update Task"/>
+                    </DataTrigger>
+
+                    <DataTrigger
+                        TargetType="Button"
+                        Binding="{Binding IsSaveButtonEnabled}"
+                        Value="False">
+
+                        <Setter
+                            Property="InputTransparent"
+                            Value="True"/>
+                        <Setter
+                            Property="BackgroundColor"
+                            Value="#e2efdc"/>
+                    </DataTrigger>
+
+                    <DataTrigger
+                        TargetType="Button"
+                        Binding="{Binding IsSaveButtonEnabled}"
+                        Value="True">
+
+                        <Setter
+                            Property="InputTransparent"
+                            Value="False"/>
+                        <Setter
+                            Property="Style"
+                            Value="{x:StaticResource GreenButton}"/>
+                    </DataTrigger>
+                </Button.Triggers>
+            </Button>
+
+            <StackLayout
+                Grid.Row="4"
+                Orientation="Horizontal"
+                VerticalOptions="End"
+                HorizontalOptions="FillAndExpand">
+                <Button
+                    Text="Cancel"
+                    Style="{x:StaticResource PrimaryButton}"
+                    HorizontalOptions="FillAndExpand"
+                    Command="{Binding GoBackCommand}"/>
+
+                <Button
+                    Text="Delete Task"
+                    IsVisible="{Binding IsUpdate}"
+                    Style="{x:StaticResource OrangeButton}"
+                    HorizontalOptions="End"
+                    Command="{Binding DeleteTaskCommand}"/>
+
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>
+
